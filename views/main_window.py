@@ -48,6 +48,16 @@ from repositories.prestador_repository import PrestadorRepository
 from views.proveedor_form_view import ProveedorFormView
 from repositories.prestador_repository import PrestadorRepository
 
+from repositories.estudio_repository import EstudioRepository
+
+
+from views.evaluacion_detalle_view import EvaluacionDetalleView
+
+from repositories.estudio_repository import EstudioRepository
+from repositories.cotizacion_repository import CotizacionRepository
+from repositories.evaluacion_repository import EvaluacionRepository
+
+
 class MainWindow(QMainWindow):
 
     def __init__(self):
@@ -941,6 +951,39 @@ class MainWindow(QMainWindow):
             EvaluacionesView()
         )
 
+        try:
+            estudios = EstudioRepository().obtener_todos()
+
+            registros = []
+
+            for estudio in estudios:
+                fecha = (
+                    estudio.fecha_elaboracion.strftime("%d/%m/%Y")
+                    if estudio.fecha_elaboracion
+                    else ""
+                )
+
+                registros.append({
+                    "id": estudio.id,
+                    "expediente": estudio.expediente or "",
+                    "fecha": fecha,
+                    "area": estudio.area_descripcion or "",
+                    "responsable": estudio.responsable or "",
+                    "estado": (estudio.estado or "BORRADOR").upper()
+                })
+
+            self.vista_evaluaciones.cargar_registros(registros)
+
+        except Exception as error:
+            QMessageBox.critical(
+                self,
+                "Error al cargar evaluaciones",
+                "No fue posible consultar los estudios registrados.\n\n"
+                f"{error}"
+            )
+
+            self.vista_evaluaciones.cargar_registros([])
+
         # ==============================================
         # EVENTOS
         # ==============================================
@@ -965,16 +1008,64 @@ class MainWindow(QMainWindow):
 
         #self.layout_contenido.addStretch()
 
-    def ver_evaluacion(
-        self,
-        estudio_id
-    ):
 
-        QMessageBox.information(
-            self,
-            "Evaluación",
-            f"Se seleccionó la evaluación con ID: {estudio_id}"
-        )
+    def ver_evaluacion(self, estudio_id):
+
+        try:
+            estudio = EstudioRepository().obtener_por_id(
+                estudio_id
+            )
+
+            if estudio is None:
+                QMessageBox.warning(
+                    self,
+                    "Estudio no encontrado",
+                    "No se encontró el estudio seleccionado."
+                )
+                self.mostrar_evaluaciones()
+                return
+
+            cotizaciones = (
+                CotizacionRepository().obtener_por_estudio(
+                    estudio_id
+                )
+            )
+
+            evaluaciones = (
+                EvaluacionRepository().obtener_por_estudio(
+                    estudio_id
+                )
+            )
+
+            self.actualizar_menu_activo(
+                self.boton_evaluaciones
+            )
+
+            self.limpiar_contenido()
+
+            self.vista_detalle_evaluacion = EvaluacionDetalleView(
+                estudio=estudio,
+                cotizaciones=cotizaciones,
+                evaluaciones=evaluaciones
+            )
+
+            self.vista_detalle_evaluacion.volver_solicitado.connect(
+                self.mostrar_evaluaciones
+            )
+
+            self.layout_contenido.addWidget(
+                self.vista_detalle_evaluacion
+            )
+
+        except Exception as error:
+            QMessageBox.critical(
+                self,
+                "Error al consultar evaluación",
+                "No fue posible cargar la información "
+                "de la evaluación.\n\n"
+                f"{error}"
+            )
+
 
     # ==================================================
     # NUEVA EVALUACIÓN

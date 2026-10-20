@@ -51,22 +51,6 @@ class EvaluacionesView(QWidget):
 
         self.cargar_registros(
             [
-                {
-                    "id": 1,
-                    "expediente": "SMDIF/001/2026",
-                    "fecha": "10/09/2026",
-                    "area": "Administración",
-                    "responsable": "Juanito Sanchez",
-                    "estado": "BORRADOR"
-                },
-                {
-                    "id": 2,
-                    "expediente": "SMDIF/002/2026",
-                    "fecha": "12/09/2026",
-                    "area": "Servicios Generales",
-                    "responsable": "Gabriel Zepeda",
-                    "estado": "FINALIZADO"
-                }
             ]
         )
 

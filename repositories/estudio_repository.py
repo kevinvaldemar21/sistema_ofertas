@@ -6,11 +6,30 @@ from models.estudio_prestador import EstudioPrestador
 
 from datetime import datetime
 
-
-
 class EstudioRepository:
     
+    def obtener_todos(self, solo_activos=True):
+        sesion = obtener_sesion()
 
+        try:
+            consulta = select(EstudioMercado)
+
+            if solo_activos:
+                consulta = consulta.where(
+                    EstudioMercado.activo.is_(True)
+                )
+
+            consulta = consulta.order_by(
+                EstudioMercado.fecha_elaboracion.desc(),
+                EstudioMercado.id.desc()
+            )
+
+            return list(sesion.scalars(consulta))
+
+        finally:
+            sesion.close()
+    
+    
     def existe_expediente(self, expediente):
 
         sesion = obtener_sesion()
@@ -184,4 +203,18 @@ class EstudioRepository:
 
         finally:
 
+            sesion.close()
+
+    
+    def obtener_por_id(self, estudio_id):
+
+        sesion = obtener_sesion()
+
+        try:
+            return sesion.get(
+                EstudioMercado,
+                estudio_id
+            )
+
+        finally:
             sesion.close()
