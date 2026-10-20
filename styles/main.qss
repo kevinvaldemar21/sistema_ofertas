@@ -1,0 +1,458 @@
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+QMainWindow {
+    background-color: #F7F5F6;
+}
+
+QWidget {
+    font-family: "Segoe UI";
+    font-size: 13px;
+    color: #2C2528;
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+   ========================================================= */
+
+#contenidoPrincipal {
+    background-color: #F7F5F6;
+}
+
+
+/* =========================================================
+   MENÚ LATERAL
+   ========================================================= */
+
+#menuLateral {
+    background-color: #571426;
+    border: none;
+}
+
+
+#tituloMenu {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+#subtituloMenu {
+    color: #EAB9C8;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   BOTONES DEL MENÚ
+   ========================================================= */
+
+#menuLateral QPushButton {
+    background-color: transparent;
+    color: #F9EDF1;
+
+    border: none;
+    border-radius: 8px;
+
+    text-align: left;
+
+    padding: 12px 14px;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+#menuLateral QPushButton:hover {
+    background-color: #741D35;
+}
+
+#menuLateral QPushButton[activo="true"] {
+    background-color: #8C2945;
+
+    color: #FFFFFF;
+
+    border-left: 4px solid #F0A7BA;
+
+    font-weight: 600;
+}
+
+#menuLateral QPushButton[activo="true"]:hover {
+    background-color: #8C2945;
+}
+
+
+/* =========================================================
+   BOTÓN ACTIVO
+   ========================================================= */
+
+#botonMenuActivo {
+    background-color: #8C2945;
+    color: #FFFFFF;
+
+    border: none;
+    border-left: 5px solid #F0A7BA;
+
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    font-weight: 600;
+
+    padding-left: 15px;
+}
+
+#botonMenuActivo:hover {
+    background-color: #8C2945;
+    border-left: 5px solid #F0A7BA;
+}
+
+
+/* =========================================================
+   SALIR
+   ========================================================= */
+
+#menuLateral QPushButton#botonSalir {
+    color: #EAB9C8;
+
+    border: 1px solid #8F4357;
+
+    text-align: center;
+}
+
+
+#menuLateral QPushButton#botonSalir:hover {
+    background-color: #7A1F35;
+
+    color: #FFFFFF;
+}
+
+
+/* =========================================================
+   ENCABEZADOS
+   ========================================================= */
+
+#tituloPagina {
+    color: #571426;
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+
+#descripcionPagina {
+    color: #746A6E;
+
+    font-size: 13px;
+}
+
+
+#subtituloPagina {
+    color: #571426;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+
+#tarjetaPrincipal {
+    background-color: #FFFFFF;
+    border: 1px solid #E5DDE0;
+    border-radius: 12px;
+}
+
+#tarjetaModulo {
+    background-color: #FFFFFF;
+    border: 1px solid #E5DDE0;
+    border-radius: 12px;
+}
+
+#tarjetaModulo[hover="true"] {
+    background-color: #FFF7F9;
+    border: 1px solid #C75B7A;
+    border-top: 3px solid #8C2945;
+}
+
+#tarjetaPrincipal[hover="true"] {
+    background-color: #FFFBFC;
+    border: 1px solid #D9A3B2;
+}
+
+
+#descripcionTarjeta {
+    color: #746A6E;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   BOTÓN PRINCIPAL
+   ========================================================= */
+
+#botonPrimario {
+    background-color: #7A1F35;
+
+    color: #FFFFFF;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 11px 20px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+#botonPrimario:hover {
+    background-color: #912943;
+}
+
+
+#botonPrimario:pressed {
+    background-color: #571426;
+}
+
+
+/* =========================================================
+   BOTÓN SECUNDARIO
+   ========================================================= */
+
+#botonSecundario {
+    background-color: transparent;
+
+    color: #8C2945;
+
+    border: 1px solid #DFA6B6;
+
+    border-radius: 7px;
+
+    padding: 9px 16px;
+
+    font-weight: 600;
+}
+
+#botonSecundario:hover {
+    background-color: #F8E8ED;
+
+    border-color: #B94F6D;
+
+    color: #6A152D;
+}
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+
+#contenedorFiltros {
+    background-color: #FFFFFF;
+
+    border: 1px solid #E5DDE0;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   CAMPO DE BÚSQUEDA
+   ========================================================= */
+
+#inputBusqueda {
+    background-color: #FFFFFF;
+    color: #2C2528;
+
+    border: 1px solid #DDD3D6;
+    border-radius: 7px;
+
+    padding: 7px 12px;
+}
+
+#inputBusqueda:focus {
+    border: 1px solid #C75B7A;
+}
+
+
+/* =========================================================
+   COMBO DE ESTADOS
+   ========================================================= */
+/* =========================================================
+   FILTRO DE ESTADO
+   ========================================================= */
+
+#comboFiltro {
+    background-color: #FFFFFF;
+    color: #571426;
+
+    border: 1px solid #D8C8CD;
+    border-radius: 8px;
+
+    padding: 8px 38px 8px 12px;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+#comboFiltro:hover {
+    background-color: #FFF9FB;
+
+    border: 1px solid #C75B7A;
+}
+
+
+#comboFiltro:focus {
+    border: 1px solid #A94B66;
+}
+
+
+/* =========================================================
+   ÁREA DEL DESPLEGABLE
+   ========================================================= */
+
+#comboFiltro::drop-down {
+    width: 34px;
+
+    border: none;
+
+    background-color: transparent;
+}
+
+
+/* =========================================================
+   FLECHA
+   ========================================================= */
+
+#comboFiltro::down-arrow {
+    image: url(resources/icons/flecha.svg);
+
+    width: 14px;
+    height: 14px;
+}
+
+
+/* =========================================================
+   LISTA DESPLEGABLE
+   ========================================================= */
+
+#comboFiltro QAbstractItemView {
+    background-color: #FFFFFF;
+
+    color: #2C2528;
+
+    border: 1px solid #E5DDE0;
+
+    selection-background-color: #F3DDE4;
+    selection-color: #571426;
+
+    padding: 4px;
+}
+
+
+/* =========================================================
+   TABLA EVALUACIONES
+   ========================================================= */
+
+#tablaEvaluaciones,
+#tablaProveedores {
+    background-color: #FFFFFF;
+
+    border: 1px solid #E5DDE0;
+    border-radius: 10px;
+
+    selection-background-color: #F6E4EA;
+    selection-color: #571426;
+}
+
+
+#tablaEvaluaciones QHeaderView::section,
+#tablaProveedores QHeaderView::section {
+    background-color: #FAF4F6;
+
+    color: #571426;
+
+    border: none;
+    border-bottom: 1px solid #E5DDE0;
+
+    padding: 11px;
+
+    font-weight: 600;
+}
+
+
+#tablaEvaluaciones::item,
+#tablaProveedores::item {
+    border-bottom: 1px solid #EEE7E9;
+
+    padding: 8px;
+}
+
+
+#tablaEvaluaciones::item:hover,
+#tablaProveedores::item:hover {
+    background-color: #FFF7F9;
+}
+
+
+/* =========================================================
+   BOTONES DE TABLA
+   ========================================================= */
+
+#botonTabla {
+    background-color: transparent;
+
+    color: #8C2945;
+
+    border: 1px solid #DDA6B5;
+
+    border-radius: 6px;
+
+    padding: 6px 12px;
+
+    font-weight: 500;
+}
+
+
+#botonTabla:hover {
+    background-color: #F8E8ED;
+
+    border-color: #C75B7A;
+}
+
+
+/* =========================================================
+   ESTADOS
+   ========================================================= */
+
+#etiquetaEstado {
+    padding: 5px 9px;
+
+    border-radius: 7px;
+
+    font-weight: 600;
+}
+
+
+#etiquetaEstado[estado="BORRADOR"] {
+    background-color: #F7E8ED;
+
+    color: #8C2945;
+}
+
+
+#etiquetaEstado[estado="FINALIZADO"] {
+    background-color: #E8EFEA;
+
+    color: #47634E;
+}
